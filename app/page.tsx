@@ -89,7 +89,7 @@ export default function LandingPage() {
         <div className="absolute bottom-[40%] right-[15%] w-2 h-2 bg-indigo-400 rounded-full opacity-45 animate-float-2"></div>
       </div>
 
-      {/* Advanced Header */}
+      {/* Responsive Header (fixed JSX, state at component level) */}
       <header
         className={`px-4 lg:px-6 h-24 flex items-center justify-between fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
           scrollY > 50
@@ -97,6 +97,7 @@ export default function LandingPage() {
             : "glass-ultra backdrop-blur-xl"
         }`}
       >
+        {/* Logo */}
         <Link
           className="flex items-center justify-center transition-all duration-500 hover:scale-105 px-2 group"
           href="#"
@@ -112,6 +113,7 @@ export default function LandingPage() {
           />
         </Link>
 
+        {/* Desktop Nav */}
         <nav className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex gap-8">
           {[
             { id: "features", label: "Features" },
@@ -126,8 +128,8 @@ export default function LandingPage() {
               className="text-base font-medium text-white/80 hover:text-white transition-all duration-300 relative group"
               href={`#${item.id}`}
               onClick={(e) => {
-                e.preventDefault()
-                scrollToSection(item.id)
+                e.preventDefault();
+                scrollToSection(item.id);
               }}
             >
               {item.label}
@@ -137,80 +139,93 @@ export default function LandingPage() {
           ))}
         </nav>
 
+        {/* Desktop Socials & CTA */}
         <div className="flex items-center gap-6">
           <div className="hidden md:flex items-center gap-4">
             {/* X (formerly Twitter) Icon */}
-            <Link
-              href="#"
-              className="text-white/80 font-semibold hover:text-white transition-colors duration-300"
-              aria-label="X (formerly Twitter)"
-            >
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 23 20"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5"
-              >
-                <path
-                  d="M17.4257 0H20.8183L13.4062 8.47193L22.1262 20H15.2983L9.9508 13.0081L3.83186 20H0.436864L8.36493 10.9385L0 0H7.00084L11.8347 6.39068L17.4257 0ZM16.2348 17.9691H18.1149L5.9794 1.92425H3.96211L16.2348 17.9691Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
+            <Link href="#" className="text-white/80 font-semibold hover:text-white transition-colors duration-300" aria-label="X (formerly Twitter)">
+              <svg width="22" height="22" viewBox="0 0 23 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5"><path d="M17.4257 0H20.8183L13.4062 8.47193L22.1262 20H15.2983L9.9508 13.0081L3.83186 20H0.436864L8.36493 10.9385L0 0H7.00084L11.8347 6.39068L17.4257 0ZM16.2348 17.9691H18.1149L5.9794 1.92425H3.96211L16.2348 17.9691Z" fill="currentColor"></path></svg>
             </Link>
-
             {/* Telegram Icon */}
-            <Link
-              href="#"
-              className="text-white/80 font-semibold hover:text-white transition-colors duration-300"
-              aria-label="Telegram"
-            >
-              <svg
-                width="22"
-                height="20"
-                viewBox="0 0 23 20"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M1.65859 8.61014C8.13673 5.78729 12.4561 3.92709 14.6175 3.02781C20.7892 0.461031 22.0713 0.0148607 22.9072 0.000104155C23.0912 -0.00249995 23.5018 0.0426375 23.7683 0.258778C23.9931 0.441065 24.0547 0.687588 24.0843 0.860327C24.1138 1.03393 24.1511 1.42715 24.1216 1.73531C23.7874 5.24911 22.3404 13.7758 21.6043 17.7115C21.2927 19.3772 20.679 19.9354 20.0852 19.9901C18.7953 20.109 17.8153 19.1368 16.5653 18.3174C14.6097 17.0361 13.5047 16.2376 11.6063 14.9867C9.41187 13.5406 10.8346 12.7463 12.0846 11.4477C12.4118 11.1075 18.0974 5.93572 18.2077 5.46698C18.2216 5.40796 18.2346 5.18921 18.1044 5.07377C17.9742 4.95832 17.7823 4.99825 17.6443 5.0295C17.4481 5.07377 14.3241 7.13882 8.27128 11.2247C7.38414 11.834 6.58034 12.13 5.86074 12.1153C5.06736 12.0979 3.54136 11.6665 2.40684 11.2976C1.01538 10.8453 -0.0904999 10.6057 0.00585192 9.83754C0.0553299 9.43737 0.606532 9.02853 1.65859 8.61014Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
+            <Link href="#" className="text-white/80 font-semibold hover:text-white transition-colors duration-300" aria-label="Telegram">
+              <svg width="22" height="20" viewBox="0 0 23 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5"><path fillRule="evenodd" clipRule="evenodd" d="M1.65859 8.61014C8.13673 5.78729 12.4561 3.92709 14.6175 3.02781C20.7892 0.461031 22.0713 0.0148607 22.9072 0.000104155C23.0912 -0.00249995 23.5018 0.0426375 23.7683 0.258778C23.9931 0.441065 24.0547 0.687588 24.0843 0.860327C24.1138 1.03393 24.1511 1.42715 24.1216 1.73531C23.7874 5.24911 22.3404 13.7758 21.6043 17.7115C21.2927 19.3772 20.679 19.9354 20.0852 19.9901C18.7953 20.109 17.8153 19.1368 16.5653 18.3174C14.6097 17.0361 13.5047 16.2376 11.6063 14.9867C9.41187 13.5406 10.8346 12.7463 12.0846 11.4477C12.4118 11.1075 18.0974 5.93572 18.2077 5.46698C18.2216 5.40796 18.2346 5.18921 18.1044 5.07377C17.9742 4.95832 17.7823 4.99825 17.6443 5.0295C17.4481 5.07377 14.3241 7.13882 8.27128 11.2247C7.38414 11.834 6.58034 12.13 5.86074 12.1153C5.06736 12.0979 3.54136 11.6665 2.40684 11.2976C1.01538 10.8453 -0.0904999 10.6057 0.00585192 9.83754C0.0553299 9.43737 0.606532 9.02853 1.65859 8.61014Z" fill="currentColor"></path></svg>
             </Link>
-
             {/* Blockchain/Web3 Icon */}
-            <Link
-              href="#"
-              className="text-white/80 font-semibold hover:text-white transition-colors duration-300"
-              aria-label="Blockchain"
-            >
-              <svg
-                width="22"
-                height="20"
-                viewBox="0 0 18 20"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M6.46817 1.13091C5.27673 1.75155 4.30196 2.27674 4.30217 2.29811C4.3027 2.35324 7.16166 3.80113 7.26314 3.7976C7.3093 3.79605 7.64415 3.64191 8.00722 3.45511L8.66745 3.11552L9.38851 3.48616L10.1095 3.85686L11.2903 3.32627C13.0696 2.52676 13.2544 2.43914 13.2254 2.40971C13.187 2.37065 12.5488 2.02782 10.8174 1.11628C9.9806 0.675729 9.16845 0.24378 9.01253 0.156375C8.85663 0.0689698 8.7078 -0.00134158 8.6818 1.94306e-05C8.6558 0.00138045 7.65963 0.510285 6.46817 1.13091ZM1.24251 3.83693L0.0022376 4.47758V7.28925C0.0022376 8.83568 0.0185237 10.1009 0.0385006 10.1009C0.0584083 10.1009 0.668628 9.83638 1.39451 9.51308L2.7143 8.92526V5.96157L3.35924 6.31294C3.85622 6.58345 4.3535 6.85342 4.85107 7.12284L5.69795 7.58136L6.07479 7.41096C6.31113 7.30392 6.54699 7.19583 6.78238 7.08671C6.96427 7.00201 7.41078 6.8009 7.77458 6.63972C8.13839 6.47848 8.47516 6.31633 8.52291 6.27938C8.58635 6.23029 7.81283 5.80283 5.66189 4.69829C4.04055 3.8657 2.66198 3.18712 2.59841 3.19038C2.53483 3.19363 1.92468 3.48454 1.24251 3.83693ZM13.4489 4.01684C12.6042 4.39818 11.9125 4.72542 11.9117 4.74408C11.911 4.76272 12.3714 5.03647 12.9349 5.35232C13.4983 5.66823 13.9594 5.9436 13.9594 5.96433C13.9594 5.98503 13.4608 6.22662 12.8514 6.50131C12.242 6.77594 10.7016 7.47158 9.42828 8.0472L5.16175 9.97573C4.08851 10.4609 3.12111 10.8982 3.01197 10.9476C0.819816 11.94 0.217278 12.2154 0.134533 12.2626C0.0513264 12.3102 0.0324798 12.5867 0.0176701 13.9743L0 15.6293L1.10911 16.1944L2.2182 16.7595L3.75613 16.0654C4.60201 15.6837 5.29405 15.3514 5.29405 15.3269C5.29405 15.3025 5.13774 15.2007 4.94678 15.1005C4.75573 15.0004 4.36136 14.7786 4.07031 14.6077C3.77929 14.4367 3.48909 14.2799 3.42538 14.2591C3.36169 14.2384 3.3105 14.2021 3.31153 14.1784C3.3126 14.1548 3.98983 13.8331 4.8164 13.4635C6.42187 12.7457 7.6505 12.1925 10.2882 10.9996C11.4677 10.4664 12.6473 9.93341 13.8271 9.40078C14.8639 8.93278 16.0695 8.38618 16.5061 8.18613L17.2998 7.82242L17.3175 6.14858L17.3352 4.47481L16.2103 3.89741C15.5916 3.57988 15.0627 3.32085 15.035 3.3218C15.0073 3.32267 14.2936 3.63541 13.4489 4.01684ZM16.9985 10.0554C16.8327 10.1364 16.5053 10.288 16.2708 10.3923C16.0364 10.4966 15.5916 10.6973 15.2823 10.8384L14.7201 11.0948L14.7072 12.5643C14.7002 13.3725 14.6704 14.0302 14.6411 14.0259C14.5746 14.016 13.5208 13.4756 12.4615 12.908C11.6969 12.4983 11.6489 12.4821 11.4693 12.571C11.3654 12.6225 10.7446 12.9009 10.0898 13.1898C9.43488 13.4787 8.87774 13.7339 8.85154 13.757C8.8254 13.7801 10.1434 14.4945 11.7805 15.3446L14.7569 16.8902L16.0284 16.2325C16.7277 15.8707 17.3223 15.5408 17.3496 15.4993C17.4113 15.406 17.406 9.89538 17.3443 9.90284C17.3199 9.90577 17.1642 9.97444 16.9985 10.0554ZM9.95747 16.5235C9.73691 16.6183 9.51642 16.7133 9.29599 16.8083C8.63034 17.0963 8.76079 17.1059 7.96886 16.7116C7.44141 16.4491 7.21405 16.3681 7.11537 16.4074C7.04134 16.4369 6.40427 16.7235 5.69954 17.0443C4.99486 17.3651 4.39384 17.6276 4.36395 17.6276C4.06828 17.6276 4.55982 17.9213 6.45654 18.878L8.68095 20L9.61687 19.5379C10.1316 19.2838 11.1699 18.7749 11.9242 18.4071C12.6784 18.0391 13.2861 17.7286 13.2748 17.7168C13.2633 17.7052 12.6313 17.3806 11.8703 16.9957L10.4866 16.2958L9.95747 16.5235Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
+            <Link href="#" className="text-white/80 font-semibold hover:text-white transition-colors duration-300" aria-label="Blockchain">
+              <svg width="22" height="20" viewBox="0 0 18 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5"><path fillRule="evenodd" clipRule="evenodd" d="M6.46817 1.13091C5.27673 1.75155 4.30196 2.27674 4.30217 2.29811C4.3027 2.35324 7.16166 3.80113 7.26314 3.7976C7.3093 3.79605 7.64415 3.64191 8.00722 3.45511L8.66745 3.11552L9.38851 3.48616L10.1095 3.85686L11.2903 3.32627C13.0696 2.52676 13.2544 2.43914 13.2254 2.40971C13.187 2.37065 12.5488 2.02782 10.8174 1.11628C9.9806 0.675729 9.16845 0.24378 9.01253 0.156375C8.85663 0.0689698 8.7078 -0.00134158 8.6818 1.94306e-05C8.6558 0.00138045 7.65963 0.510285 6.46817 1.13091ZM1.24251 3.83693L0.0022376 4.47758V7.28925C0.0022376 8.83568 0.0185237 10.1009 0.0385006 10.1009C0.0584083 10.1009 0.668628 9.83638 1.39451 9.51308L2.7143 8.92526V5.96157L3.35924 6.31294C3.85622 6.58345 4.3535 6.85342 4.85107 7.12284L5.69795 7.58136L6.07479 7.41096C6.31113 7.30392 6.54699 7.19583 6.78238 7.08671C6.96427 7.00201 7.41078 6.8009 7.77458 6.63972C8.13839 6.47848 8.47516 6.31633 8.52291 6.27938C8.58635 6.23029 7.81283 5.80283 5.66189 4.69829C4.04055 3.8657 2.66198 3.18712 2.59841 3.19038C2.53483 3.19363 1.92468 3.48454 1.24251 3.83693ZM13.4489 4.01684C12.6042 4.39818 11.9125 4.72542 11.9117 4.74408C11.911 4.76272 12.3714 5.03647 12.9349 5.35232C13.4983 5.66823 13.9594 5.9436 13.9594 5.96433C13.9594 5.98503 13.4608 6.22662 12.8514 6.50131C12.242 6.77594 10.7016 7.47158 9.42828 8.0472L5.16175 9.97573C4.08851 10.4609 3.12111 10.8982 3.01197 10.9476C0.819816 11.94 0.217278 12.2154 0.134533 12.2626C0.0513264 12.3102 0.0324798 12.5867 0.0176701 13.9743L0 15.6293L1.10911 16.1944L2.2182 16.7595L3.75613 16.0654C4.60201 15.6837 5.29405 15.3514 5.29405 15.3269C5.29405 15.3025 5.13774 15.2007 4.94678 15.1005C4.75573 15.0004 4.36136 14.7786 4.07031 14.6077C3.77929 14.4367 3.48909 14.2799 3.42538 14.2591C3.36169 14.2384 3.3105 14.2021 3.31153 14.1784C3.3126 14.1548 3.98983 13.8331 4.8164 13.4635C6.42187 12.7457 7.6505 12.1925 10.2882 10.9996C11.4677 10.4664 12.6473 9.93341 13.8271 9.40078C14.8639 8.93278 16.0695 8.38618 16.5061 8.18613L17.2998 7.82242L17.3175 6.14858L17.3352 4.47481L16.2103 3.89741C15.5916 3.57988 15.0627 3.32085 15.035 3.3218C15.0073 3.32267 14.2936 3.63541 13.4489 4.01684ZM16.9985 10.0554C16.8327 10.1364 16.5053 10.288 16.2708 10.3923C16.0364 10.4966 15.5916 10.6973 15.2823 10.8384L14.7201 11.0948L14.7072 12.5643C14.7002 13.3725 14.6704 14.0302 14.6411 14.0259C14.5746 14.016 13.5208 13.4756 12.4615 12.908C11.6969 12.4983 11.6489 12.4821 11.4693 12.571C11.3654 12.6225 10.7446 12.9009 10.0898 13.1898C9.43488 13.4787 8.87774 13.7339 8.85154 13.757C8.8254 13.7801 10.1434 14.4945 11.7805 15.3446L14.7569 16.8902L16.0284 16.2325C16.7277 15.8707 17.3223 15.5408 17.3496 15.4993C17.4113 15.406 17.406 9.89538 17.3443 9.90284C17.3199 9.90577 17.1642 9.97444 16.9985 10.0554ZM9.95747 16.5235C9.73691 16.6183 9.51642 16.7133 9.29599 16.8083C8.63034 17.0963 8.76079 17.1059 7.96886 16.7116C7.44141 16.4491 7.21405 16.3681 7.11537 16.4074C7.04134 16.4369 6.40427 16.7235 5.69954 17.0443C4.99486 17.3651 4.39384 17.6276 4.36395 17.6276C4.06828 17.6276 4.55982 17.9213 6.45654 18.878L8.68095 20L9.61687 19.5379C10.1316 19.2838 11.1699 18.7749 11.9242 18.4071C12.6784 18.0391 13.2861 17.7286 13.2748 17.7168C13.2633 17.7052 12.6313 17.3806 11.8703 16.9957L10.4866 16.2958L9.95747 16.5235Z" fill="currentColor"></path></svg>
             </Link>
           </div>
-
           <Button size="sm" className="btn-neural text-white font-semibold px-6">
             Launch App
           </Button>
+          {/* Hamburger for mobile */}
+          <button
+            className="md:hidden flex items-center justify-center ml-2 p-2 rounded-lg hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            aria-label="Open menu"
+            onClick={() => setIsMenuOpen((v) => !v)}
+          >
+            <svg
+              className="w-7 h-7 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        {isMenuOpen && (
+          <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex md:hidden" onClick={() => setIsMenuOpen(false)}>
+            <div
+              className="ml-auto w-4/5 max-w-xs h-full bg-[#18192a] shadow-2xl flex flex-col gap-6 p-6 animate-slide-in-right"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Section Headings */}
+              <nav className="flex flex-col gap-4 mt-4">
+                {[
+                  { id: "features", label: "Features" },
+                  { id: "ai-features", label: "AI Features" },
+                  { id: "earn", label: "Earn" },
+                  { id: "why-rezonate", label: "Why Rezonate" },
+                  { id: "how-it-works", label: "How It Works" },
+                  { id: "roadmap", label: "Roadmap" },
+                ].map((item) => (
+                  <Link
+                    key={item.id}
+                    className="text-lg font-semibold text-white/90 hover:text-blue-400 transition-colors duration-200 py-2"
+                    href={`#${item.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item.id);
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+              {/* Social Media Links (optional) */}
+              <div className="flex gap-6 mt-2">
+                <Link href="#" className="text-white/80 hover:text-white" aria-label="X (formerly Twitter)">
+                  <svg width="22" height="22" viewBox="0 0 23 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5"><path d="M17.4257 0H20.8183L13.4062 8.47193L22.1262 20H15.2983L9.9508 13.0081L3.83186 20H0.436864L8.36493 10.9385L0 0H7.00084L11.8347 6.39068L17.4257 0ZM16.2348 17.9691H18.1149L5.9794 1.92425H3.96211L16.2348 17.9691Z" fill="currentColor"></path></svg>
+                </Link>
+                <Link href="#" className="text-white/80 hover:text-white" aria-label="Telegram">
+                  <svg width="22" height="20" viewBox="0 0 23 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5"><path fillRule="evenodd" clipRule="evenodd" d="M1.65859 8.61014C8.13673 5.78729 12.4561 3.92709 14.6175 3.02781C20.7892 0.461031 22.0713 0.0148607 22.9072 0.000104155C23.0912 -0.00249995 23.5018 0.0426375 23.7683 0.258778C23.9931 0.441065 24.0547 0.687588 24.0843 0.860327C24.1138 1.03393 24.1511 1.42715 24.1216 1.73531C23.7874 5.24911 22.3404 13.7758 21.6043 17.7115C21.2927 19.3772 20.679 19.9354 20.0852 19.9901C18.7953 20.109 17.8153 19.1368 16.5653 18.3174C14.6097 17.0361 13.5047 16.2376 11.6063 14.9867C9.41187 13.5406 10.8346 12.7463 12.0846 11.4477C12.4118 11.1075 18.0974 5.93572 18.2077 5.46698C18.2216 5.40796 18.2346 5.18921 18.1044 5.07377C17.9742 4.95832 17.7823 4.99825 17.6443 5.0295C17.4481 5.07377 14.3241 7.13882 8.27128 11.2247C7.38414 11.834 6.58034 12.13 5.86074 12.1153C5.06736 12.0979 3.54136 11.6665 2.40684 11.2976C1.01538 10.8453 -0.0904999 10.6057 0.00585192 9.83754C0.0553299 9.43737 0.606532 9.02853 1.65859 8.61014Z" fill="currentColor"></path></svg>
+                </Link>
+                <Link href="#" className="text-white/80 hover:text-white" aria-label="Blockchain">
+                  <svg width="22" height="20" viewBox="0 0 18 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5"><path fillRule="evenodd" clipRule="evenodd" d="M6.46817 1.13091C5.27673 1.75155 4.30196 2.27674 4.30217 2.29811C4.3027 2.35324 7.16166 3.80113 7.26314 3.7976C7.3093 3.79605 7.64415 3.64191 8.00722 3.45511L8.66745 3.11552L9.38851 3.48616L10.1095 3.85686L11.2903 3.32627C13.0696 2.52676 13.2544 2.43914 13.2254 2.40971C13.187 2.37065 12.5488 2.02782 10.8174 1.11628C9.9806 0.675729 9.16845 0.24378 9.01253 0.156375C8.85663 0.0689698 8.7078 -0.00134158 8.6818 1.94306e-05C8.6558 0.00138045 7.65963 0.510285 6.46817 1.13091ZM1.24251 3.83693L0.0022376 4.47758V7.28925C0.0022376 8.83568 0.0185237 10.1009 0.0385006 10.1009C0.0584083 10.1009 0.668628 9.83638 1.39451 9.51308L2.7143 8.92526V5.96157L3.35924 6.31294C3.85622 6.58345 4.3535 6.85342 4.85107 7.12284L5.69795 7.58136L6.07479 7.41096C6.31113 7.30392 6.54699 7.19583 6.78238 7.08671C6.96427 7.00201 7.41078 6.8009 7.77458 6.63972C8.13839 6.47848 8.47516 6.31633 8.52291 6.27938C8.58635 6.23029 7.81283 5.80283 5.66189 4.69829C4.04055 3.8657 2.66198 3.18712 2.59841 3.19038C2.53483 3.19363 1.92468 3.48454 1.24251 3.83693ZM13.4489 4.01684C12.6042 4.39818 11.9125 4.72542 11.9117 4.74408C11.911 4.76272 12.3714 5.03647 12.9349 5.35232C13.4983 5.66823 13.9594 5.9436 13.9594 5.96433C13.9594 5.98503 13.4608 6.22662 12.8514 6.50131C12.242 6.77594 10.7016 7.47158 9.42828 8.0472L5.16175 9.97573C4.08851 10.4609 3.12111 10.8982 3.01197 10.9476C0.819816 11.94 0.217278 12.2154 0.134533 12.2626C0.0513264 12.3102 0.0324798 12.5867 0.0176701 13.9743L0 15.6293L1.10911 16.1944L2.2182 16.7595L3.75613 16.0654C4.60201 15.6837 5.29405 15.3514 5.29405 15.3269C5.29405 15.3025 5.13774 15.2007 4.94678 15.1005C4.75573 15.0004 4.36136 14.7786 4.07031 14.6077C3.77929 14.4367 3.48909 14.2799 3.42538 14.2591C3.36169 14.2384 3.3105 14.2021 3.31153 14.1784C3.3126 14.1548 3.98983 13.8331 4.8164 13.4635C6.42187 12.7457 7.6505 12.1925 10.2882 10.9996C11.4677 10.4664 12.6473 9.93341 13.8271 9.40078C14.8639 8.93278 16.0695 8.38618 16.5061 8.18613L17.2998 7.82242L17.3175 6.14858L17.3352 4.47481L16.2103 3.89741C15.5916 3.57988 15.0627 3.32085 15.035 3.3218C15.0073 3.32267 14.2936 3.63541 13.4489 4.01684ZM16.9985 10.0554C16.8327 10.1364 16.5053 10.288 16.2708 10.3923C16.0364 10.4966 15.5916 10.6973 15.2823 10.8384L14.7201 11.0948L14.7072 12.5643C14.7002 13.3725 14.6704 14.0302 14.6411 14.0259C14.5746 14.016 13.5208 13.4756 12.4615 12.908C11.6969 12.4983 11.6489 12.4821 11.4693 12.571C11.3654 12.6225 10.7446 12.9009 10.0898 13.1898C9.43488 13.4787 8.87774 13.7339 8.85154 13.757C8.8254 13.7801 10.1434 14.4945 11.7805 15.3446L14.7569 16.8902L16.0284 16.2325C16.7277 15.8707 17.3223 15.5408 17.3496 15.4993C17.4113 15.406 17.406 9.89538 17.3443 9.90284C17.3199 9.90577 17.1642 9.97444 16.9985 10.0554ZM9.95747 16.5235C9.73691 16.6183 9.51642 16.7133 9.29599 16.8083C8.63034 17.0963 8.76079 17.1059 7.96886 16.7116C7.44141 16.4491 7.21405 16.3681 7.11537 16.4074C7.04134 16.4369 6.40427 16.7235 5.69954 17.0443C4.99486 17.3651 4.39384 17.6276 4.36395 17.6276C4.06828 17.6276 4.55982 17.9213 6.45654 18.878L8.68095 20L9.61687 19.5379C10.1316 19.2838 11.1699 18.7749 11.9242 18.4071C12.6784 18.0391 13.2861 17.7286 13.2748 17.7168C13.2633 17.7052 12.6313 17.3806 11.8703 16.9957L10.4866 16.2958L9.95747 16.5235Z" fill="currentColor"></path></svg>
+                </Link>
+              </div>
+              {/* CTA Button */}
+              <Button size="sm" className="btn-neural text-white font-semibold px-6 mt-6 w-full">
+                Launch App
+              </Button>
+            </div>
+          </div>
+        )}
       </header>
 
       <main className="flex-1 pt-24" id="top">
@@ -221,92 +236,90 @@ export default function LandingPage() {
         >
           <div className="container px-4 md:px-6 relative z-10">
             <div className="grid gap-8 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] items-center">
-              <div className="flex flex-col justify-center space-y-6">
-                <div className="space-y-4">
-                  <h1 className="hero-title-ai animate-fade-in-up animation-delay-200">
-                    Social Media, <span className="text-gradient-neural">Reinvented</span> – Earn, Engage, Own
-                  </h1>
-
-                  <p className="max-w-[600px] text-white/70 text-lg md:text-xl leading-relaxed animate-fade-in-up animation-delay-400">
-                    Rezonate is the <span className="text-gradient-ai font-semibold">next-gen AI-powered Web3 </span>{" "}
-                    social platform where your time and content earn real rewards in $REZO tokens. 
-                    No emails. No middlemen. Just your wallet, your voice, and yourvalue.
-                  </p>
-                </div>
-
-                <div className="flex flex-col gap-4 min-[400px]:flex-row animate-fade-in-up animation-delay-600">
-                  <Button size="lg" className="px-8 group btn-ai text-white font-semibold text-lg">
-                    <BarChart3 className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
-                    <span className="relative">
-                      View Chart
-                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    </span>
-                  </Button>
-
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="group glass-ultra border-white/20 text-white hover:bg-white/10 font-semibold text-lg bg-transparent"
-                  >
-                    <span className="relative">
-                      Join Community
-                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400/60 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                    </span>
-                    <Network className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
-                  </Button>
-                </div>
-
-                <div className="flex items-center space-x-6 text-sm animate-fade-in-up animation-delay-800">
-                  {[
-                    { icon: CheckCircle, text: "iOS & Android", color: "text-green-400" },
-                    { icon: CheckCircle, text: "Web3 Powered", color: "text-blue-400" },
-                    { icon: CheckCircle, text: "AI Enhanced", color: "text-purple-400" },
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center space-x-2 group">
-                      <item.icon
-                        className={`h-4 w-4 ${item.color} group-hover:scale-110 transition-transform duration-300`}
+              {/* Responsive hero section: stack on mobile, side-by-side on desktop */}
+              <div className="flex flex-col-reverse lg:flex-row gap-8 items-center">
+                {/* Image and floating elements */}
+                <div className="w-full max-w-[500px] mx-auto animate-fade-in-scale animation-delay-700">
+                  <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl border-neural shadow-2xl hover:shadow-3xl transition-all duration-700 hover:scale-[1.02] group glow-neural">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl"></div>
+                    <div className="relative w-full h-full rounded-xl overflow-hidden border border-white/10 transition-transform duration-700 group-hover:scale-[1.01] data-flow">
+                      <img
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Image%2019-06-2025%20at%203.30%E2%80%AFPM.jpg-dFqj2hod6WsiYmEeIDl2cnmZ6aXOwM.jpeg"
+                        alt="Rezonate App Interface - AI-Powered Social Media Platform"
+                        className="w-full h-full object-cover object-top rounded-xl transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
+                        style={{ objectFit: "cover", objectPosition: "top center" }}
                       />
-                      <span className="text-white/80 group-hover:text-white transition-colors duration-300">
-                        {item.text}
-                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-xl"></div>
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center animate-fade-in-scale animation-delay-700">
-                <div className="relative w-full max-w-[600px] aspect-[4/3] overflow-hidden rounded-2xl border-neural shadow-2xl hover:shadow-3xl transition-all duration-700 hover:scale-[1.02] group glow-neural">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl"></div>
-                  <div className="relative w-full h-full rounded-xl overflow-hidden border border-white/10 transition-transform duration-700 group-hover:scale-[1.01] data-flow">
-                    <img
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Image%2019-06-2025%20at%203.30%E2%80%AFPM.jpg-dFqj2hod6WsiYmEeIDl2cnmZ6aXOwM.jpeg"
-                      alt="Rezonate App Interface - AI-Powered Social Media Platform"
-                      className="w-full h-full object-cover object-top rounded-xl transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
-                      style={{ objectFit: "cover", objectPosition: "top center" }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-xl"></div>
+                    {/* Floating Elements */}
+                    <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
+                    <div className="absolute -top-8 -left-8 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl animate-pulse animation-delay-1000"></div>
+                    {/* Play Button */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 glass-neural rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center cursor-pointer hover:scale-110 glow-ai">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="28"
+                        height="28"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-7 w-7 text-white ml-1"
+                      >
+                        <polygon points="5,3 19,12 5,21"></polygon>
+                      </svg>
+                    </div>
                   </div>
-
-                  {/* Floating Elements */}
-                  <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
-                  <div className="absolute -top-8 -left-8 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl animate-pulse animation-delay-1000"></div>
-
-                  {/* Play Button */}
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 glass-neural rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center cursor-pointer hover:scale-110 glow-ai">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="28"
-                      height="28"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-7 w-7 text-white ml-1"
+                </div>
+                {/* Text and actions */}
+                <div className="flex flex-col justify-center space-y-6 w-full max-w-xl mx-auto">
+                  <div className="space-y-4">
+                    <h1 className="hero-title-ai animate-fade-in-up animation-delay-200 text-center lg:text-left">
+                      Social Media, <span className="text-gradient-neural">Reinvented</span> – Earn, Engage, Own
+                    </h1>
+                    <p className="max-w-full text-white/70 text-lg md:text-xl leading-relaxed animate-fade-in-up animation-delay-400 break-words hyphens-auto w-full text-center lg:text-left">
+                      Rezonate is the <span className="text-gradient-ai font-semibold">next-gen AI-powered Web3 </span>
+                      social platform where your time and content earn real rewards in $REZO tokens. <br className="hidden md:block" />
+                      No emails. No middlemen. Just your wallet, your voice, and your value.
+                    </p>
+                  </div>
+                  <div className="flex flex-col gap-4 w-full sm:flex-row sm:justify-start animate-fade-in-up animation-delay-600">
+                    <Button size="lg" className="w-full sm:w-auto px-8 group btn-ai text-white font-semibold text-lg">
+                      <BarChart3 className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                      <span className="relative">
+                        View Chart
+                        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                      </span>
+                    </Button>
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="w-full sm:w-auto group glass-ultra border-white/20 text-white hover:bg-white/10 font-semibold text-lg bg-transparent"
                     >
-                      <polygon points="5,3 19,12 5,21"></polygon>
-                    </svg>
+                      <span className="relative">
+                        Join Community
+                        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400/60 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                      </span>
+                      <Network className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
+                    </Button>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:space-x-6 text-sm animate-fade-in-up animation-delay-800 items-center sm:items-start justify-center sm:justify-start mt-2">
+                    {[
+                      { icon: CheckCircle, text: "iOS & Android", color: "text-green-400" },
+                      { icon: CheckCircle, text: "Web3 Powered", color: "text-blue-400" },
+                      { icon: CheckCircle, text: "AI Enhanced", color: "text-purple-400" },
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-center space-x-2 group mt-2 sm:mt-0">
+                        <item.icon
+                          className={`h-4 w-4 ${item.color} group-hover:scale-110 transition-transform duration-300`}
+                        />
+                        <span className="text-white/80 group-hover:text-white transition-colors duration-300">
+                          {item.text}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -993,39 +1006,40 @@ export default function LandingPage() {
               </div>
 
               <div className="flex flex-col gap-6 min-[400px]:flex-row animate-on-scroll animation-delay-300">
-                <Button size="lg" className="px-10 py-4 group btn-neural text-white font-semibold text-lg glow-neural">
-                  <span className="mr-3 text-xl">🚀</span>
-                  <span className="relative">
-                    Download Now
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                  </span>
-                </Button>
-
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="px-10 py-4 group glass-ultra border-white/20 text-white hover:bg-white/10 font-semibold text-lg bg-transparent"
-                >
-                  <span className="relative">
-                    Learn More
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400/60 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                  </span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                <div className="flex flex-col gap-4 w-full sm:flex-row sm:justify-center sm:items-center">
+                  <Button size="lg" className="w-full sm:w-auto px-10 py-4 group btn-neural text-white font-semibold text-lg glow-neural">
+                    <span className="mr-3 text-xl">🚀</span>
+                    <span className="relative">
+                      Download Now
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    </span>
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="w-full sm:w-auto px-10 py-4 group glass-ultra border-white/20 text-white hover:bg-white/10 font-semibold text-lg bg-transparent"
                   >
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                  </svg>
-                </Button>
+                    <span className="relative">
+                      Learn More
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400/60 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
